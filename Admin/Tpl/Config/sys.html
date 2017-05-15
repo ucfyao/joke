@@ -1,0 +1,76 @@
+<include file="Public:header"/>
+<div id="nav" class="mainnav_title">
+	<ul>
+		<a href="<{:U('Config/index')}>">站点配置</a>|
+		<a href="<{:U('Config/sys')}>" class="on">系统参数</a>|
+		<a href="<{:U('Config/user')}>">会员设置</a>|
+		<a href="<{:U('Config/mail')}>">系统邮箱</a>|
+		<a href="<{:U('Config/water')}>">上传图片配置</a>|
+		<a href="<{:U('Config/other')}>">第三方配置</a>|
+		<a href="<{:U('Config/mobile')}>">手机版设置</a>|
+		<a href="<{:U('Config/collect')}>">采集设置</a>
+	</ul>
+</div>
+<form id="myform" method='post' name="login" action="<{:U('Config/amend')}>">
+	<table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+		<tr>
+			<th width="140">内容通过顶的数量:</th>
+			<td><input type="text" class="input-text" name="article_upper" value="<{$config.article_upper}>" size="15"/></td>
+		</tr>
+		<tr>
+			<th width="140">内容不通过踩的数量:</th>
+			<td><input type="text" class="input-text" name="article_below" value="<{$config.article_below}>" size="15"/></td>
+		</tr>
+		<tr>
+			<th width="140">列表分页数:</th>
+			<td><input type="text" class="input-text" name="page_rows" value="<{$config.page_rows}>" size="15"/></td>
+		</tr>
+		<tr>
+			<th width="140">图片瀑布流:</th>
+			<td>
+				<select name="site_waterfall" class="valid">
+					<option value="0" <if condition="$config['site_waterfall'] eq 0">selected="selected"</if>>关闭</option>
+					<option value="1" <if condition="$config['site_waterfall'] eq 1">selected="selected"</if>>开启</option>
+				</select> <font color="red">开启后，用户访问图片列表将以瀑布流方式展现，否则以普通列表页面方式展现。如果开启请保证有waterall.html模板</font> <a href="http://bbs.loowei.com" target="_blank">前往论坛求助！</a>
+			</td>
+		</tr>
+		<tr>
+			<th width="140">图片瀑布流分页数:</th>
+			<td><input type="text" class="input-text" name="waterfall_rows" value="<{$config.waterfall_rows}>" size="15"/></td>
+		</tr>
+		<tr>
+			<th width="140">选择模板:</th>
+			<td>
+				<select name="default_theme">
+					<volist name="theme_list" id="vo">
+						<if condition="$vo['cannot_select']">
+							<optgroup label="<{$vo.html}>"></optgroup>
+						<else/>
+							<option value="<{$vo.value}>" <if condition="$vo['value'] eq $config['default_theme']">selected="selected"</if>><{$vo.value}></option>
+						</if>
+					</volist>
+				</select>
+				<font color="red">模板请存放在 “<{$_SERVER.DOCUMENT_ROOT}>/Tpl/”目录下！</font>
+			</td>
+		</tr>
+		<tr>
+			<th width="140">网站开启伪静态:</th>
+			<td>
+				<select name="site_html" class="valid">
+					<option value="0" <if condition="$config['site_html'] eq 0">selected="selected"</if>>关闭</option>
+					<option value="1" <if condition="$config['site_html'] eq 1">selected="selected"</if>>开启</option>
+				</select> <font color="red">开启伪静态，请前往论坛下载与主机适用的伪静态规则文件！如果网站已经处于正式运营，为了SEO，不建议更改。 <a href="http://bbs.loowei.com" target="_blank">前往论坛求助！</a></font>
+			</td>
+		</tr>
+		<tr>
+			<th width="140">网站安全码:</th>
+			<td><input type="text" class="input-text" name="site_safecode" value="<{$config.site_safecode}>" size="60"/> <font color="red">如果网站安全码有被他人知道的风险，则请修改。一般不建议修改！</font></td>
+		</tr>
+	</table>
+	<div class="btn">
+		<input TYPE="submit"  name="dosubmit" value="提交" class="button" />
+		<input type="reset"  value="取消" class="button" />
+	</div>
+</form>
+</body>
+</html>

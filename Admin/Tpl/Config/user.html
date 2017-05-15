@@ -1,0 +1,39 @@
+<include file="Public:header"/>
+<div id="nav" class="mainnav_title">
+	<ul>
+		<a href="<{:U('Config/index')}>">站点配置</a>|
+		<a href="<{:U('Config/sys')}>">系统参数</a>|
+		<a href="<{:U('Config/user')}>" class="on">会员设置</a>|
+		<a href="<{:U('Config/mail')}>">系统邮箱</a>|
+		<a href="<{:U('Config/water')}>">上传图片配置</a>|
+		<a href="<{:U('Config/other')}>">第三方配置</a>|
+		<a href="<{:U('Config/mobile')}>">手机版设置</a>|
+		<a href="<{:U('Config/collect')}>">采集设置</a>
+	</ul>
+</div>
+<form id="myform" method='post' name="login" action="<{:U('Config/amend')}>">
+	<table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+		<tr>
+			<th width="140">注册需邮件验证:</th>
+			<td><input type="radio" class="input_radio " name="user_emailcheck" value="1" <if condition="$config['user_emailcheck'] eq 1">checked="checked"</if>/>是 &nbsp;&nbsp;&nbsp;<input type="radio" class="input_radio " name="user_emailcheck" value="0" <if condition="$config['user_emailcheck'] eq 0">checked="checked"</if>/>否</td>
+		</tr>
+		<tr>
+			<th width="140">邮件内容可用变量</th>
+			<td>网站名称：{sitename} , 链接网址：{url} , 会员名称：{username} , <br/>会员邮箱地址：{email} , 当前时间{time}</td>
+		</tr>
+		<tr>
+			<th width="140">邮件认证模板:</th>
+			<td><textarea rows="6" cols="60" name="user_emailchecktpl"><{$config.user_emailchecktpl}></textarea></td>
+		</tr>
+		<tr>
+			<th width="140">密码找回邮件模板:</th>
+			<td><textarea rows="6" cols="60" name="user_getpwdemaitpl"><{$config.user_getpwdemaitpl}></textarea></td>
+		</tr>
+	</table>
+	<div class="btn">
+		<input TYPE="submit"  name="dosubmit" value="提交" class="button" />
+		<input type="reset"  value="取消" class="button" />
+	</div>
+</form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<include file="Public:header"/>
+<div id="nav" class="mainnav_title">
+	<ul>
+		<a href="<{:U('Config/index')}>">站点配置</a>|
+		<a href="<{:U('Config/sys')}>">系统参数</a>|
+		<a href="<{:U('Config/user')}>">会员设置</a>|
+		<a href="<{:U('Config/mail')}>" class="on">系统邮箱</a>|
+		<a href="<{:U('Config/water')}>">上传图片配置</a>|
+		<a href="<{:U('Config/other')}>">第三方配置</a>|
+		<a href="<{:U('Config/mobile')}>">手机版设置</a>|
+		<a href="<{:U('Config/collect')}>">采集设置</a>
+	</ul>
+</div>
+<form id="myform" method='post' name="login" action="<{:U('Config/amend')}>">
+	<table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+		<tr>
+			<th width="140">邮件服务器:</th>
+			<td><input type="text" class="input-text" name="mail_server" value="<{$config.mail_server}>" size="30"/></td>
+		</tr>
+		<tr>
+			<th width="140">邮件发送端口:</th>
+			<td><input type="text" class="input-text" name="mail_port" value="<{$config.mail_port}>" size="30"/></td>
+		</tr>
+		<tr>
+			<th width="140">发件人地址:</th>
+			<td><input type="text" class="input-text" name="mail_from" value="<{$config.mail_from}>" size="30"/></td>
+		</tr>
+		<tr> 
+			<th>AUTH LOGIN验证</th> 
+			<td class="y-bg"> 
+			<input name="mail_auth" value="1" type="radio" <if condition="$config['mail_auth'] eq 1">checked="checked"</if>/>开启&nbsp;&nbsp;&nbsp;<input name="mail_auth" value="0" type="radio" <if condition="$config['mail_auth'] eq 0">checked="checked"</if>/>关闭</td> 
+		</tr>
+		<tr>
+			<th width="140">验证用户名:</th>
+			<td><input type="text" class="input-text" name="mail_user" value="<{$config.mail_user}>" size="30"/></td>
+		</tr>
+		<tr>
+			<th width="140">验证密码:</th>
+			<td><input type="text" class="input-text" name="mail_pwd" value="<{$config.mail_pwd}>" size="30"/></td>
+		</tr>
+	</table>
+	<div class="btn">
+		<input TYPE="submit"  name="dosubmit" value="提交" class="button" />
+		<input type="reset"  value="取消" class="button" />
+	</div>
+</form>
+</body>
+</html>

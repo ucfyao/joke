@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>图片瀑布流_<{$config.site_name}></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="<{$config.seo_keywords}>"/>
+		<meta name="description" content="<{$config.seo_description}>"/>
+		<meta name="author" content="loowei.com"/>
+		<meta name="generator" content="loowei笑话程序"/>
+		<meta name="copyright" content="loowei.com"/>
+		<link rel="stylesheet" type="text/css" href="<{$TMPL_PUBLIC}>/Css/main.css"/>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.js"></script>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.artDialog.js?skin=aero"></script>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.placeholder.js"></script>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.masonry.js"></script>
+		<script type="text/javascript">var site_url='<{$config.site_url}>';</script>
+		<script type="text/javascript" src="<{$TMPL_PUBLIC}>/Js/pic.js"></script>
+	</head>
+	<body>
+		<include file="Public:top" />
+		<div class="main">
+			<div class="content-block">
+				<div id="pic_main">
+					<article_list page="1" user="1" condition="`a`.`uid` eq `u`.`uid` AND `a`.`status` eq 1 AND `a`.`type` eq 1 AND `a`.`pic_height` lt 1000">
+						<div class="pic_item">
+							<div>
+								<a href="<{$value.url}>" target="_blank" title="查看大图">
+									<img src="<{$value.pic_url}>" alt="<{$value.title}>" height="<{$value['pic_height']/$value['pic_width']*200}>px"/>
+								</a>
+							</div>
+							<p class="pic_content"><{$value.content|msubstr=###,0,100,false}>&nbsp;&nbsp;<a href="<{$value.url}>#comments_<{$value.id}>" target="_blank">评论(<{$value.reply}>)</a></p>
+							<if condition="empty($value['is_anonymous'])">
+								<dl class="user_dl">
+									<dt class="user_avatar">
+										<img src="<{$value.avatar_m}>" alt="<{$value.nickname}>" />
+									</dt>
+									<dd class="user_uname">
+										<a href="<{$value.user_url}>" target="_blank"><{$value.nickname}></a>
+									</dd>
+									<dd class="user_time">
+										<{$value.time|date='Y-m-d H时',###}> 发布
+									</dd>
+								</dl>
+							</if>
+						</div>
+					</article_list>				
+				</div>
+			</div>
+			<div id="pic_page_loading">
+				<img src="<{$config.site_url}>/Public/Images/loading3.gif"/>努力加载中……
+			</div>	
+		</div>
+		<div class="clear"></div>
+<include file="Public:footer" />

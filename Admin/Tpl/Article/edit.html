@@ -1,0 +1,69 @@
+<include file="Public:header"/>
+<div id="nav" class="mainnav_title">
+	<ul>
+		<a href="<{:U('Article/index')}>">内容列表</a>
+		<a href="<{:U('Article/edit?id='.$article['id'])}>" class="on">编辑内容</a>
+	</ul>
+</div>
+<form id="myform" method='post' name="login" action="<{:U('Article/amend')}>" enctype="multipart/form-data">
+	<input type="hidden" name="id" value="<{$article.id}>"/>
+	<table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+		<tr>
+			<td width="15%">标题:</td>
+			<td><input type="text" class="input-text" name="title" size="60" value="<{$article.title}>"/> <font color="red">选填！若不填系统将自动从内容中截取。</font></td>
+		</tr>
+		<tr>
+			<td width="15%">内容:</td>
+			<td><textarea rows="10" cols="80" name="content" validate="required:true"><{$article.content}></textarea></td>
+		</tr>
+		<if condition="!empty($article['pic_url'])">
+			<tr>
+				<td width="15%">原图片:</td>
+				<td>
+					<if condition="strpos(strtolower($article['pic_url']),'http://') heq false">
+						<img src="./Uploads/Images/<{$article['pic_url']}>"/>
+					<else/>
+						<img src="<{$article['pic_url']}>"/>
+					</if>
+				</td>
+			</tr>
+		</if>
+		<tr>
+			<td width="15%">图片:</td>
+			<td><input type="file" name="pic"/></td>
+		</tr>
+		<tr>
+			<td width="15%">视频:</td>
+			<td><input type="text" class="input-text" name="video" value="<{$article.video}>" size="60"/> 视频的flash地址.. <a href="./Public/Demo/" target="_blank" style="color:red;">点击查看上传视频演示例子</a></td>
+		</tr>
+		<tr>
+			<td width="15%">标签:</td>
+			<td><input type="text" class="input-text" name="tag" value="<{$article.tag}>" size="40"/> （最多3个标签，用空格分隔）</td>
+		</tr>
+		<tr>
+			<td width="15%">选项:</td>
+			<td><input name="is_anonymous" type="checkbox" onclick="this.value=this.checked?'1':'0'" <if condition="$article['is_anonymous']">checked="checked"</if> />	 匿名投稿</td>
+		</tr>
+		<tr>
+			<td width="15%">顶的数量:</td>
+			<td><input type="text" class="input-text" name="upper" size="25" value="<{$article.upper}>"/></td>
+		</tr>
+		<tr>
+			<td width="15%">踩的数量:</td>
+			<td><input type="text" class="input-text" name="below" size="25" value="<{$article.below}>"/></td>
+		</tr>
+		<tr>
+			<td width="15%">状态:</td>
+			<td>
+				<label><input name="status" type="radio" value="1" <if condition="$article['status'] eq 1">checked="checked"</if>/>	开启</label>
+				<label><input name="status" type="radio" value="0" <if condition="$article['status'] eq 0">checked="checked"</if>/>	隐藏</label>
+			</td>
+		</tr>
+	</table>
+	<div class="btn">
+		<input TYPE="submit" name="dosubmit" value="提交" class="button" />
+		<input type="reset" value="取消" class="button" />
+	</div>
+</form>
+</body>
+</html>

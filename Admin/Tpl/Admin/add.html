@@ -1,0 +1,51 @@
+<include file="Public:header"/>
+<div id="nav" class="mainnav_title">
+	<ul>
+		<a href="<{:U('Admin/index')}>">管理员列表</a>|
+		<a href="<{:U('Admin/add')}>" class="on">添加管理员</a>
+	</ul>
+</div>
+<form id="myform" method='post' name="login" action="<{:U('Admin/modify')}>">
+	<table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+		<tr>
+			<td width="15%">管理员帐号:</td>
+			<td><input type="text" class="input-text" name="admin_name" size="30" validate="minlength:2,maxlength:50,required:true"/></td>
+		</tr>
+		<tr>
+			<td width="15%">管理员密码:</td>
+			<td><input type="text" class="input-text" name="admin_pwd" size="30" validate="minlength:2,maxlength:50,required:true"/></td>
+		</tr>
+		<tr>
+			<td width="15%">管理员姓名:</td>
+			<td><input type="text" class="input-text" name="admin_realname" size="30" validate="minlength:2,maxlength:50,required:true"/></td>
+		</tr>
+		<tr>
+			<td width="15%">管理员QQ:</td>
+			<td><input type="text" class="input-text" name="admin_qq" size="30"/></td>
+		</tr>
+		<tr>
+			<td width="15%">管理员电话:</td>
+			<td><input type="text" class="input-text" name="admin_phone" size="30"/></td>
+		</tr>
+		<tr>
+			<td width="15%">管理员等级:</td>
+			<td width="85%" id="box_status">
+				<label style="float:left;width:150px;" class="checkbox_status"><input type="radio" class="input_radio" name="admin_level" checked="checked" value="0" /> 普通管理员</label>
+				<label style="float:left;width:150px;" class="checkbox_status"><input type="radio" class="input_radio" name="admin_level" value="1" /> 超级管理员</label>		
+			</td>
+		</tr>
+		<tr>
+			<td width="15%">管理员状态:</td>
+			<td width="85%" id="box_status">
+				<label style="float:left;width:75px" class="checkbox_status"><input type="radio" class="input_radio" name="admin_status" checked="checked" value="1" /> 开启</label>
+				<label style="float:left;width:75px" class="checkbox_status"><input type="radio" class="input_radio" name="admin_status" value="0" /> 关闭</label>		
+			</td>
+		</tr>
+	</table>
+	<div class="btn">
+		<input TYPE="submit" name="dosubmit" value="提交" class="button" />
+		<input type="reset" value="取消" class="button" />
+	</div>
+</form>
+</body>
+</html>

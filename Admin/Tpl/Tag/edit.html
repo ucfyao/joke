@@ -1,0 +1,33 @@
+<include file="Public:header"/>
+<div id="nav" class="mainnav_title">
+	<ul>
+		<a href="<{:U('Tag/index')}>">标签列表</a>|
+		<a href="<{:U('Tag/edit?tag_id='.$hot_tag['tag_id'])}>" class="on">修改标签</a>
+	</ul>
+</div>
+<form id="myform" method='post' name="login" action="<{:U('Tag/amend')}>">
+	<input type="hidden" name="tag_id" value="<{$hot_tag.tag_id}>"/>
+	<table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+		<tr>
+			<td width="15%">标签:</td>
+			<td><input type="text" class="input-text" name="tag_name" value="<{$hot_tag.tag_name}>" size="30" validate="minlength:2,maxlength:50,required:true"/></td>
+		</tr>
+		<tr>
+			<td width="15%">排序:</td>
+			<td><input type="text" class="input-text" name="tag_sort" size="15" value="<{$hot_tag.tag_sort}>"/></td>
+		</tr>
+		<tr>
+			<td width="15%">状态:</td>
+			<td width="85%" id="box_status">
+				<label style="float:left;width:75px" class="checkbox_status"><input type="radio" class="input_radio" name="tag_status" value="1" <if condition="$hot_tag['tag_status'] eq 1">checked="checked"</if> /> 开启</label>
+				<label style="float:left;width:75px" class="checkbox_status"><input type="radio" class="input_radio" name="tag_status" value="0" <if condition="$hot_tag['tag_status'] eq 0">checked="checked"</if> /> 关闭</label>		
+			</td>
+		</tr>
+	</table>
+	<div class="btn">
+		<input TYPE="submit" name="dosubmit" value="提交" class="button" />
+		<input type="reset" value="取消" class="button" />
+	</div>
+</form>
+</body>
+</html>

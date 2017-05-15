@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>找回密码 - <{$config.site_name}></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="<{$config.seo_keywords}>"/>
+		<meta name="description" content="<{$config.seo_description}>"/>
+		<meta name="author" content="loowei.com"/>
+		<meta name="generator" content="loowei笑话程序"/>
+		<meta name="copyright" content="loowei.com"/>
+		<link rel="stylesheet" type="text/css" href="<{$TMPL_PUBLIC}>/Css/main.css"/>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.js"></script>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.artDialog.js?skin=aero"></script>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.placeholder.js"></script>
+		<script type="text/javascript">var site_url='<{$config.site_url}>';</script>
+		<script type="text/javascript" src="<{$TMPL_PUBLIC}>/Js/getpass.js"></script>
+	</head>
+	<body>
+		<include file="Public:top" />
+		<div class="logo_div">
+			<h1 id="logo"><a href="<{$config.site_url}>"><img src="<{$config.site_logo}>" alt="<{$config.site_name}>"/></a></h1>
+			<div class="menu">
+				<ul>
+					<li><a href="<{$config.site_url}>/8hr/">热门</a></li>
+					<li><a href="<{$config.site_url}>/late/">最新</a></li>
+					<li class="hot">
+						<a href="<{$config.site_url}>/hot/" class="dropdown">精华</a>
+						<div class="drpmdown-list">
+							<a href="<{$config.site_url}>/hot/" class="submenu">24小时内</a>
+							<a href="<{$config.site_url}>/week/" class="submenu">7天内</a>
+							<a href="<{$config.site_url}>/month/" class="submenu">30天内</a>
+						</div>
+					</li>
+					<li class="menuout"><a href="<{$config.site_url}>/pic/">图片</a></li>
+					<li class="menuout"><a href="<{$config.site_url}>/video/">视频</a></li>
+					<li class="menuout"><a href="<{$config.site_url}>/history/">穿越</a></li>
+					<li class="menuout"><a href="<{$config.site_url}>/ticket/">审贴</a></li>
+					<li class="menuout" id="btn-talk"><a href="<{$config.site_url}>/add/">讲一个</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="main">
+			<div class="content-block">
+				<div style="height:400px;margin:0 auto;width:300px;margin-top:100px;">
+					<div class="signin-form">
+						<form method="post" id="setpass-form" action="<{:U('Login/set_pass')}>">
+							<input type="hidden" name="code" value="<{$code}>"/>
+							<input type="hidden" name="uid" value="<{$user.uid}>"/>
+							<input type="password" id="setpass_password" name="password" placeholder="您的新密码" /><br/><br/>
+							<input type="password" id="setpass_re_password" name="re_password" placeholder="重复一次密码" /><br/><br/>
+							<button type="submit">设置新密码</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<dl class="friendlinks">
+				<dt></dt>
+				<dd>
+					<volist name="flink_list" id="vo">
+						<a href="<{$vo.url}>" target="_blank" title="<{$vo.info}>"><{$vo.name}></a><if condition="count($flink_list) neq $i">|</if>
+					</volist>
+				</dd>
+			</dl>
+			<div class="copyright">
+				<p class="l">版权所有 <span style="font-family:Helvetica;">©</span> 2013 <{$config.site_name}>  <if condition="$config['site_icp']"><a href="http://www.miibeian.gov.cn" target="_blank" rel="nofollow"><{$config.site_icp}></a></if></p>
+				<p class="r">Power by <a href="http://www.loowei.com" target="_blank">Loowei</a></p>
+			</div>
+			<a class="goTop" id="goTop" href="#" target="_self"></a>
+		</div>
+		<!--其他插件 S-->
+			<div class="hc"><{$config.site_footer}></div>
+			<div class="hc alert_box" id="loginbox">
+				<div class="signin-form">
+					<form method="post" id="login-form">
+						<input type="text" id="login_login" name="login" placeholder="用户名" />
+						<input type="password" id="login_password" name="password" placeholder="密码" />
+						<button type="submit">登录</button>
+					</form>
+				</div>
+				<div class="signin-account">
+					<span>合作网站登录：</span>
+					<if condition="$config['open_qq_connect']">
+						<span class="signin-icon-qq"></span>
+						<a href="http://openapi.qzone.qq.com/oauth/show?which=Login&display=pc&client_id=<{$config.qq_appid}>&response_type=code&redirect_uri=<{:urlencode($config['site_url'].'/login?src=qq')}>" target="_blank">腾讯QQ</a>
+					</if>
+					<if condition="$config['open_sina_connect']">
+						<span class="signin-icon-weibo"></span>
+						<a href="https://api.weibo.com/oauth2/authorize?client_id=63372306&redirect_uri=<{:urlencode($config['site_url'].'/login?src=sina')}>" target="_blank">新浪微博</a>
+					</if>
+				</div>
+				<div class="signin-foot">
+					<a href="javascript:fetchpassbox();">找回密码</a>
+					<a href="javascript:regbox();">注册</a>
+				</div>
+			</div>
+			<div class="hc alert_box" id="regbox">
+				<div class="signin-form">
+					<form method="post" id="reg-form">
+						<input type="text" id="reg_login" name="login" placeholder="用户名" /><br/><br/>
+						<input type="password" id="reg_password" name="password" placeholder="密码(最少6位)" /><br/><br/>
+						<input type="text" id="reg_email" name="email" placeholder="邮箱" /><br/><br/>
+						<button type="submit">注册</button>
+					</form>
+				</div>
+				<div class="signin-account">
+					<span>合作网站登录：</span>
+					<if condition="$config['open_qq_connect']">
+						<span class="signin-icon-qq"></span>
+						<a href="http://openapi.qzone.qq.com/oauth/show?which=Login&display=pc&client_id=<{$config.qq_appid}>&response_type=code&redirect_uri=<{:urlencode($config['site_url'].'/login?src=qq')}>" target="_blank">腾讯QQ</a>
+					</if>
+					<if condition="$config['open_sina_connect']">
+						<span class="signin-icon-weibo"></span>
+						<a href="https://api.weibo.com/oauth2/authorize?client_id=63372306&redirect_uri=<{:urlencode($config['site_url'].'/login?src=sina')}>" target="_blank">新浪微博</a>
+					</if>
+				</div>
+				<div class="signin-foot">
+					<a href="javascript:fetchpassbox();">找回密码</a>
+					<a href="javascript:loginbox();">登录</a>
+				</div>
+			</div>
+			<div class="hc alert_box" id="fetchpassbox">
+				<div class="signin-form">
+					<form method="post" id="fetchpass-form">
+						<input type="text" id="fetchpass_login" name="login" placeholder="用户名" /><input type="text" id="fetchpass_email" name="email" placeholder="注册时的邮箱" /><button type="submit">找回密码</button>
+					</form>
+				</div>
+				<div class="signin-account">
+					<span>合作网站登录：</span>
+					<if condition="$config['open_qq_connect']">
+						<span class="signin-icon-qq"></span>
+						<a href="http://openapi.qzone.qq.com/oauth/show?which=Login&display=pc&client_id=<{$config.qq_appid}>&response_type=code&redirect_uri=<{:urlencode($config['site_url'].'/login?src=qq')}>" target="_blank">腾讯QQ</a>
+					</if>
+					<if condition="$config['open_sina_connect']">
+						<span class="signin-icon-weibo"></span>
+						<a href="https://api.weibo.com/oauth2/authorize?client_id=63372306&redirect_uri=<{:urlencode($config['site_url'].'/login?src=sina')}>" target="_blank">新浪微博</a>
+					</if>
+				</div>
+				<div class="signin-foot">
+					<a href="javascript:loginbox();">登录</a>
+					<a href="javascript:regbox();">注册</a>
+				</div>
+			</div>
+		<!--其他插件 E-->
+	</body>
+</html>

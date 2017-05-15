@@ -1,0 +1,59 @@
+<include file="Public:header"/>
+<div id="nav" class="mainnav_title">
+	<ul>
+		<a href="<{:U('Config/index')}>" class="on">站点配置</a>|
+		<a href="<{:U('Config/sys')}>">系统参数</a>|
+		<a href="<{:U('Config/user')}>">会员设置</a>|
+		<a href="<{:U('Config/mail')}>">系统邮箱</a>|
+		<a href="<{:U('Config/water')}>">上传图片配置</a>|
+		<a href="<{:U('Config/other')}>">第三方配置</a>|
+		<a href="<{:U('Config/mobile')}>">手机版设置</a>|
+		<a href="<{:U('Config/collect')}>">采集设置</a>
+	</ul>
+</div>
+<form id="myform" method='post' name="login" action="<{:U('Config/amend')}>">
+	<table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+		<tr>
+			<th width="140">网站名称:</th>
+			<td><input type="text" class="input-text" name="site_name" value="<{$config.site_name}>" size="60"/></td>
+		</tr>
+		<tr>
+			<th width="140">网站网站:</th>
+			<td><input type="text" class="input-text" name="site_url" value="<{$config.site_url}>" size="60"/></td>
+		</tr>
+		<tr>
+			<th width="140">网站LOGO:</th>
+			<td><input type="text" class="input-text" name="site_logo" value="<{$config.site_logo}>" size="60"/></td>
+		</tr>
+		<tr>
+			<th width="140">站长邮箱:</th>
+			<td><input type="text" class="input-text" name="site_email" value="<{$config.site_email}>" size="60"/></td>
+		</tr>
+		<tr>
+			<th width="140">网站备案ICP号:</th>
+			<td><input type="text" class="input-text" name="site_icp" value="<{$config.site_icp}>" size="60"/></td>
+		</tr>
+		<tr>
+			<th width="140">网站SEO标题:</th>
+			<td><input type="text" class="input-text" name="seo_title" value="<{$config.seo_title}>" size="80"/> <font color="red">一般不超过80个字符</font></td>
+		</tr>
+		<tr>
+			<th width="140">网站SEO关键词:</th>
+			<td><input type="text" class="input-text" name="seo_keywords" value="<{$config.seo_keywords}>" size="80"/> <font color="red">一般不超过100个字符</font></td>
+		</tr>
+		<tr>
+			<th width="140">网站SEO描述:</th>
+			<td><textarea rows="4" cols="80" name="seo_description"><{$config.seo_description}></textarea>  <font color="red">一般不超过200个字符</font></td>
+		</tr>
+		<tr>
+			<th width="140">网站底部信息:</th>
+			<td><textarea rows="6" cols="80" name="site_footer"><{$config.site_footer}></textarea>  <font color="red">可填写统计代码等HTML代码，前台隐藏不可见！</font></td>
+		</tr>
+	</table>
+	<div class="btn">
+		<input TYPE="submit"  name="dosubmit" value="提交" class="button" />
+		<input type="reset"  value="取消" class="button" />
+	</div>
+</form>
+</body>
+</html>

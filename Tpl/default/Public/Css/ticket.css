@@ -1,0 +1,132 @@
+* {
+margin: 0;
+padding: 0;
+word-wrap: break-word;
+}
+body {
+background: url(../Images/ticket_bg.jpg) no-repeat scroll center top #252525;
+height: 100%;
+font: 12px verdana;
+line-height: 190%;
+color: #BDE3EC;
+text-align: left;
+margin: 0;
+padding: 0;
+}
+div {
+word-break: break-all;
+}
+a {
+color: #CCC;
+text-decoration: underline;
+}
+a:hover {
+background: #D7D7D7; color: #000
+}
+#container {
+min-height: 100%;
+position: relative;
+text-align: left;
+}
+#topbar {
+height: 26px;
+color: #CCC;
+background-color: black;
+position: relative;
+padding-top: 4px;
+border-bottom: 1px solid black;
+}
+#toplogo {
+float: left;
+padding-left: 12px;
+}
+#toplogo a {
+text-decoration: none;
+color: #CCC;
+}
+#toplogo a:hover{background:black;}
+.topmessage {
+float: right;
+padding-right: 12px;
+}
+.topmessage span{
+	display: inline-block;
+padding: 0px 5px;
+}
+#center-container {
+min-height: 100%;
+width: auto;
+position: relative;
+text-align: left;
+margin: 0 auto;
+padding: 20px 0 60px 0;
+clear: both;
+padding-left: 25px;
+}
+.qiushi_body2 {
+width: 300px;
+background: #E8E7E3;
+border-color: #393636;
+min-height: 400px;
+height: auto !important;
+height: 400px;
+overflow: visible;
+border-style: solid;
+border-width: 0 5px 5px 0;
+color: black;
+padding: 25px;
+font-size: 14px;
+margin: 0 0 30px 0;
+float: left;
+}
+.qiushi_body2 {
+color: black;
+font-size: 14px;
+}
+#pic {
+margin: 0 auto;
+width: 100%;
+padding: 0;
+}
+#pic img {
+max-width: 90%;
+width: expression(document.body.clientWidth>document.getElementById("pic").scrollWidth*9/10? "90%": "auto" );
+}
+#tag{
+	margin: 20px 0 0 0;
+}
+#tag b{
+	color: green;
+	margin-right:12px;
+}
+#tickets {
+font-size: 14px;
+height: auto;
+line-height: 100%;
+padding: 12px;
+position: fixed!important;
+position: absolute;
+left: 358px;
+top: 40px;
+width: auto;
+z-index: 8765;
+}
+#tickets a {
+color: white;
+}
+#tickets a:hover {color:black}
+#container-foot {
+position: relative;
+margin: -4em auto 0 auto;
+width: 100%;
+clear: both;
+}
+#footerline {
+padding-right: 0;
+padding-left: 0;
+background: black;
+padding-bottom: 0px;
+padding-top: 1px;
+text-align: left;
+margin-bottom: 8px;
+}

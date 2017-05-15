@@ -1,0 +1,38 @@
+<include file="Public:header"/>
+<div id="nav" class="mainnav_title">
+	<ul>
+		<a href="<{:U('Config/index')}>">站点配置</a>|
+		<a href="<{:U('Config/sys')}>">系统参数</a>|
+		<a href="<{:U('Config/user')}>">会员设置</a>|
+		<a href="<{:U('Config/mail')}>">系统邮箱</a>|
+		<a href="<{:U('Config/water')}>">上传图片配置</a>|
+		<a href="<{:U('Config/other')}>">第三方配置</a>|
+		<a href="<{:U('Config/mobile')}>"  class="on">手机版设置</a>|
+		<a href="<{:U('Config/collect')}>">采集设置</a>
+	</ul>
+</div>
+<form id="myform" method='post' name="login" action="<{:U('Config/amend')}>">
+	<table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+		<tr>
+			<th width="140">手机版：</th>
+			<td>
+				<select name="open_mobile" class="valid">
+					<option value="0" <if condition="$config['open_mobile'] eq 0">selected="selected"</if>>关闭</option>
+					<option value="1" <if condition="$config['open_mobile'] eq 1">selected="selected"</if>>开启</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th width="140">手机版网址：</th>
+			<td>
+				<input type="text" class="input-text valid" name="mobile_site_url" value="<{$config.mobile_site_url}>" size="30">
+			</td>
+		</tr>
+	</table>
+	<div class="btn">
+		<input TYPE="submit"  name="dosubmit" value="提交" class="button" />
+		<input type="reset"  value="取消" class="button" />
+	</div>
+</form>
+</body>
+</html>

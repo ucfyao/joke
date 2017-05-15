@@ -1,0 +1,1 @@
+<?php	return array ( 0 => 'tag_id', 1 => 'tag_name', 2 => 'tag_sort', 3 => 'tag_status', '_autoinc' => true, '_pk' => 'tag_id', '_type' => array ( 'tag_id' => 'int(11)', 'tag_name' => 'varchar(20)', 'tag_sort' => 'int(11)', 'tag_status' => 'tinyint(1)', ), );?>

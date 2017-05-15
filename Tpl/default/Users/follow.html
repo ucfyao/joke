@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title><{$user.nickname}>的关注<{$nowPage}>_<{$config.site_name}></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="<{$config.seo_keywords}>"/>
+		<meta name="description" content="<{$config.seo_description}>"/>
+		<meta name="author" content="loowei.com"/>
+		<meta name="generator" content="loowei笑话程序"/>
+		<meta name="copyright" content="loowei.com"/>
+		<link rel="stylesheet" type="text/css" href="<{$TMPL_PUBLIC}>/Css/main.css"/>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.js"></script>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.artDialog.js?skin=aero"></script>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.placeholder.js"></script>
+		<script type="text/javascript">var site_url='<{$config.site_url}>';</script>
+		<script type="text/javascript" src="<{$TMPL_PUBLIC}>/Js/main.js"></script>
+	</head>
+	<body>
+		<include file="Public:top" />
+		<div class="main">
+			<div class="content-block">
+				<div class="col_l">
+					<div class="history-nv"><if condition="$_SESSION['user']['uid'] eq $user['uid']">我<else/><font color="red"><{$user.nickname}></font></if>关注的 共有<span class="post-number"><{$count}></span>人</div>
+					<div class="shadow"></div>
+					<if condition="$count">
+						<div class="block user_follow">
+							<ul>
+								<volist name="follow" id="vo">
+									<li>
+										<a href="<{$vo.user_url}>" target="_blank" title="<{$vo.nickname}>">
+											<img src="<{$vo.avatar_m}>" alt="<{$vo.nickname}>" />
+											<br/>
+											<span><{$vo.nickname}></span>
+										</a>
+									</li>
+								</volist>
+							</ul>
+						</div>
+					<else/>
+						<div class="block" style="border:none;">哎呀，还没有关注的人呢！ o(∩_∩)o...</div>
+					</if>
+					<div class="shadow"></div>
+				</div>
+				<div class="col_r">
+					<div class="user">
+						<dl class="user-info clearfix">
+							<dt class="avatar100 l">
+								<a href="<{$user.user_url}>">
+									<img src="<{$user.avatar_m}>" alt="<{$user.nickname}>" />
+								</a>
+							</dt>
+							<dd class="l">
+								<a href="<{$user.user_url}>" class="nickname"><{$user.nickname}></a>
+							</dd>
+						</dl>
+						<ul class="user-menu">
+							<li class="menu-joke">
+								<a href="<{$user.article_url}>"><if condition="$_SESSION['user']['uid'] eq $user['uid']">我<else/><{$user.nickname}></if> 的发布</a>
+							</li>
+							<li class="menu-comment">
+								<a href="<{$user.comment_url}>"><if condition="$_SESSION['user']['uid'] eq $user['uid']">我<else/><{$user.nickname}></if> 的评论</a>
+							</li>
+							<li class="menu-comment menu-comment-current">
+								<a href="<{$user.follow_url}>"><if condition="$_SESSION['user']['uid'] eq $user['uid']">我<else/><{$user.nickname}></if> 的关注</a>
+							</li>
+							<li class="menu-comment">
+								<a href="<{$user.fans_url}>"><if condition="$_SESSION['user']['uid'] eq $user['uid']">我<else/><{$user.nickname}></if> 的粉丝</a>
+							</li>
+							<if condition="$_SESSION['user']['uid'] && $_SESSION['user']['uid'] neq $user['uid']">
+								<if condition="$is_follow">
+									<li class="menu-comment">
+										<font color="red">已关注 <{$user.nickname}></font>
+									</li>
+								<else/>
+									<li class="menu-comment">
+										<a href="<{:U('Users/to_follow?uid='.$user['uid'])}>"><font color="red">关注 <{$user.nickname}></font></a>
+									</li>
+								</if>
+							</if>
+							<if condition="$_SESSION['user']['uid'] && $_SESSION['user']['uid'] eq $user['uid']">
+								<li class="menu-comment">
+									<a href="<{:U('Users/profile')}>"><font color="red">修改资料</font></a>
+								</li>
+							</if>
+						</ul>
+					</div>
+					<div class="shadow"></div>
+					<div id="box">
+						<div id="float">
+							<div class="sponsor"><{$adver_list.1}></div>
+							<div class="shadow"></div>
+							<div id="float-ad2" class="sponsor hc"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<include file="Public:footer" />

@@ -1,0 +1,49 @@
+<include file="Public:header"/>
+<div id="nav" class="mainnav_title">
+	<ul>
+		<a href="<{:U('Article/index')}>">内容列表</a>
+		<a href="<{:U('Article/add')}>" class="on">发布内容</a>
+	</ul>
+</div>
+<form id="myform" method='post' name="login" action="<{:U('Article/addto')}>" enctype="multipart/form-data">
+	<table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+		<tr>
+			<td width="15%">标题:</td>
+			<td><input type="text" class="input-text" name="title" size="60"/> <font color="red">选填！若不填系统将自动从内容中截取。</font></td>
+		</tr>
+		<tr>
+			<td width="15%">内容:</td>
+			<td><textarea rows="10" cols="80" name="content" validate="required:true"></textarea></td>
+		</tr>
+		<tr>
+			<td width="15%">图片:</td>
+			<td><input type="file" name="pic"/></td>
+		</tr>
+		<tr>
+			<td width="15%">视频:</td>
+			<td><input type="text" class="input-text" name="video" size="60"/> 视频的flash地址.. <a href="./Public/Demo/" target="_blank" style="color:red;">点击查看上传视频演示例子</a></td>
+		</tr>
+		<tr>
+			<td width="15%">标签:</td>
+			<td><input type="text" class="input-text" name="tag" size="40"/> （最多3个标签，用空格分隔）</td>
+		</tr>
+		<tr>
+			<td width="15%">选项:</td>
+			<td><input name="is_anonymous" type="checkbox" onclick="this.value=this.checked?'1':'0'" />	 匿名投稿</td>
+		</tr>
+		<tr>
+			<td width="15%">顶的数量:</td>
+			<td><input type="text" class="input-text" name="upper" size="25" value="0"/></td>
+		</tr>
+		<tr>
+			<td width="15%">踩的数量:</td>
+			<td><input type="text" class="input-text" name="below" size="25" value="0"/></td>
+		</tr>
+	</table>
+	<div class="btn">
+		<input TYPE="submit" name="dosubmit" value="提交" class="button" />
+		<input type="reset" value="取消" class="button" />
+	</div>
+</form>
+</body>
+</html>

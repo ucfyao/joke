@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>投稿_<{$config.site_name}></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="<{$config.seo_keywords}>"/>
+		<meta name="description" content="<{$config.seo_description}>"/>
+		<meta name="author" content="loowei.com"/>
+		<meta name="generator" content="loowei笑话程序"/>
+		<meta name="copyright" content="loowei.com"/>
+		<link rel="stylesheet" type="text/css" href="<{$TMPL_PUBLIC}>/Css/main.css"/>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.js"></script>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.artDialog.js?skin=aero"></script>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.placeholder.js"></script>
+		<script type="text/javascript">
+			var site_url='<{$config.site_url}>';
+			$(function(){
+				if(window.localStorage){var article=window.localStorage.getItem('article');if(article != null && article.length > 5){$('#add_content').val(article).focus();}}
+			});
+		</script>
+		<script type="text/javascript" src="<{$TMPL_PUBLIC}>/Js/main.js"></script>
+	</head>
+	<body>
+		<include file="Public:top" />
+		<div class="main">
+			<div class="content-block">
+				<div class="col_l">
+					<div class="block">
+						<div class="new_article">
+							<h2>分享一切好笑的事情：</h2>
+							<div class="m-add-tab clearfix" id="m-add-tab">            
+								<a href="###" name="joke" class="current m-add-tab-joke" rel="m-add-tab-joke">发笑话</a>            
+								<a href="###" name="pic" rel="m-add-tab-pic" class="m-add-tab-pic">发图片</a>
+								<a href="###" name="video" rel="m-add-tab-video" class="m-add-tab-video">发视频</a>
+							</div>
+							<form action="<{:U('Add/addto')}>" method="post" id="new_article" onsubmit="return check_add();" enctype="multipart/form-data" class="font12">
+								<textarea id="add_content" name="content" oninput="checkContentLength();" placeholder="分享你的笑话"></textarea>
+								<div id="length"></div>
+								<div class="picbox hc">
+									<label>图片：</label>
+									<input type="file" id="add_pic" name="pic" /> 图片最大2M。
+								</div>
+								<div class="videobox hc">
+									<label>视频：</label>
+									<input type="text" id="add_video" name="video" /> 视频的flash地址.. <a href="<{$config.site_url}>/Public/Demo/" target="_blank" rel="nofollow">点击查看<font color="red">上传视频演示例子</font></a>
+								</div>
+								<div class="tagbox">
+									<label>标签：</label>
+									<input type="text" size="30" id="add_tag" name="tag" maxlength="30" id="qiushi_rtags" />
+									（最多3个标签，用空格分隔）
+								</div>
+								<div class="optionbox">
+									<label>选项：</label>
+									<span>
+									<input name="is_anonymous" id="is_anonymous" type="checkbox" onclick="this.value=this.checked?'1':'0'"/>
+									匿名投稿
+									</span>
+									<input type="checkbox" id="add_read" checked="checked" onclick="this.value=this.checked?'1':'0'" value="1" style="margin-left:10px;"/>
+									我已阅读并同意 <a href="#cp">投稿须知</a>
+								</div>
+								<div class="buttonbox">
+									<input type="submit" class="submit" name="commit" value="投搞"/>
+									<span id="error"></span>
+								</div>
+							</form>
+						</div>
+						<div class="post-readme">
+							<a name="cp"></a>
+							<h1>投稿须知</h1>
+							<ol>
+								<li>投递视频请使用视频地址，并且发布与此视频相关图片做为缩略图。</li>
+								<li>自己的或听说过的糗事，真实有笑点，不含政治、色情、广告、个人隐私、歧视等内容。</li>
+								<li>内容经过用户或管理员审核后发表。</li>
+								<li>转载请注明出处。</li>
+								<li>内容版权归 <b><{$config.site_name}>(<{$config.site_url}>)</b> 所有。</li>
+							</ol>
+						</div>
+					</div>
+					<div class="shadow"></div>
+				</div>
+				<div class="col_r">
+					<div class="sponsor">
+						<{$adver_list.1}>
+					</div>
+					<div class="shadow"></div>
+					<div class="microblog">
+						<h3>收听我们</h3>
+						<div class="content">
+							<div class="follow">
+								<ul>
+									<li class="inline-block f-sina">
+										<a href="<{$config.other_sina_url}>" target="_blank">新浪微博</a>
+									</li>
+									<li class="inline-block f-qq">
+										<a href="<{$config.other_tqq_url}>" target="_blank">腾讯微博</a>
+									</li>
+									<li class="inline-block f-rss">
+										<a href="<{$config.other_feed_url}>" target="_blank">Feed订阅</a>
+									</li>
+									<li class="inline-block f-feed">
+										<a href="http://mail.qq.com/cgi-bin/feed?u=<{$config.site_url}>/rss.xml" target="_blank" rel="nofollow">邮箱订阅</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="shadow"></div>
+					<div id="box">
+						<div id="float">
+							<div class="sponsor"></div>
+							<div class="shadow"></div>
+							<div id="float-ad2" class="sponsor hc"></div>
+						</div>
+					</div>
+				</div>
+				<div class="text-ad">
+					<{$adver_list.6}>
+				</div>
+			</div>
+		</div>
+<include file="Public:footer" />

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>审核新帖_<{$config.site_name}></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="<{$config.seo_keywords}>"/>
+		<meta name="description" content="<{$config.seo_description}>"/>
+		<meta name="author" content="loowei.com"/>
+		<meta name="generator" content="loowei笑话程序"/>
+		<meta name="copyright" content="loowei.com"/>
+		<link rel="stylesheet" type="text/css" href="<{$TMPL_PUBLIC}>/Css/main.css"/>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.js"></script>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.artDialog.js?skin=default"></script>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.placeholder.js"></script>
+		<script type="text/javascript">var site_url='<{$config.site_url}>';</script>
+		<script type="text/javascript" src="<{$TMPL_PUBLIC}>/Js/main.js"></script>
+		<script type="text/javascript" src="<{$TMPL_PUBLIC}>/Js/tickets.js"></script>
+		<style>
+			.bar ul li{float:right;}
+			.bar ul li a{width:88px;}
+			.down a{margin-right:10px;}
+		</style>
+	</head>
+	<body>
+		<include file="Public:top" />
+		<div class="main">
+			<div class="content-block">
+				<div class="col_l">
+					<div class="block">
+						<div class="content" id="content">Loading...</div>
+						<a id="enlarge" href="javascript:tobig();"><div class="thumb" id="pic"></div></a>
+						<div class="tags" id="tag">
+						</div>
+						<div class="bar" style="margin-top:30px;">
+							<ul>
+								<li class="share">
+									<a href="javascript:ticket_vote(0);" title="跳过">跳过	</a>
+								</li>
+								<li class="down">
+									<a href="javascript:ticket_vote(-1);" title="没笑点">没笑点</a>
+								</li>
+								<li class="up">
+									<a href="javascript:ticket_vote(1);" title="真笑了">真笑了</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="shadow"></div>
+				</div>
+				<div class="col_r">
+					<div class="sponsor">
+						<{$adver_list.1}>
+					</div>
+					<div class="shadow"></div>
+					<div class="microblog">
+						<h3>收听我们</h3>
+						<div class="content">
+							<div class="follow">
+								<link title="RSS 2.0" type="application/rss+xml" href="http://feed.feedsky.com/q-86nc" rel="alternate" />
+								<ul>
+									<li class="inline-block f-sina">
+										<a href="<{$config.other_sina_url}>" target="_blank">新浪微博</a>
+									</li>
+									<li class="inline-block f-qq">
+										<a href="<{$config.other_tqq_url}>" target="_blank">腾讯微博</a>
+									</li>
+									<li class="inline-block f-rss">
+										<a href="<{$config.other_feed_url}>" target="_blank">Feed订阅</a>
+									</li>
+									<li class="inline-block f-feed">
+										<a href="http://mail.qq.com/cgi-bin/feed?u=<{$config.site_url}>/rss.xml" target="_blank" rel="nofollow">邮箱订阅</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="shadow"></div>
+					<div class="sponsor">
+						<{$adver_list.2}>
+					</div>
+					<div class="shadow"></div>
+					<div id="box">
+						<div id="float">
+							<div class="sponsor"></div>
+							<div class="shadow"></div>
+							<div id="float-ad2" class="sponsor hc"></div>
+						</div>
+					</div>
+				</div>
+				<div class="text-ad">
+					<{$adver_list.6}>
+				</div>
+			</div>
+		</div>
+<include file="Public:footer" />

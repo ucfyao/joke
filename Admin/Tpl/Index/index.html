@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel='stylesheet' type='text/css' href='<{$TMPL_PUBLIC}>Css/style.css'/>
+<script type="text/javascript" src="./Public/Js/jquery.js"></script> 
+<script type="text/javascript" src="./Public/Js/jquery.artDialog.js?skin=aero"></script> 
+<script type="text/javascript" src="./Public/Js/iframeTools.js"></script>
+<script type="text/javascript" src="<{$TMPL_PUBLIC}>Js/index.js"></script>
+<title>网站后台管理 Powered by loowei.com</title>
+</head>
+<body style="background:#E2E9EA">
+<div id="header" class="header">
+	<div class="logo"><a href="http://www.loowei.com" target="_blank"><img src="<{$TMPL_PUBLIC}>Images/logo.png" width="180"></a></div>
+	<div class="nav f_r"><a href="<{:U('Index/cache')}>" target="main" style="color:red;">清空缓存</a> <i>|</i> <a href="http://www.loowei.com" target="_blank">官方网站</a> <i>|</i> <a href="http://bbs.loowei.com" target="_blank">支持论坛</a>  <i>|</i> <a href="http://idc.loowei.com" target="_blank">官方主机</a> &nbsp;&nbsp; &nbsp;&nbsp;</div>
+
+	<div class="nav">&nbsp;&nbsp;&nbsp;&nbsp;欢迎您！<{$admin.admin_name}>  <i>|</i> [<{$admin.admin_type}>]  <i>|</i> <a href="<{:U('Login/logout')}>" target="_top" style="color:red;">[安全退出]</a>  <i>|</i> <a href="<{$config.site_url}>" target="_blank">浏览网站</a> </div>
+
+	<div class="topmenu">
+		<ul>
+			<li><span class="current"><a href="javascript:void(0);" menu_id="1">后台首页</a></span></li>
+			<li><span><a href="javascript:void(0);" menu_id="2">系统设置</a></span></li>
+			<li><span><a href="javascript:void(0);" menu_id="3">内容管理</a></span></li>
+			<li><span><a href="javascript:void(0);" menu_id="4">会员管理</a></span></li>
+		</ul>
+	</div>
+	<div class="header_footer"></div>
+</div>
+
+<div id="Main_content">
+	<div id="MainBox" >
+	    <div class="main_box">
+			<iframe name="main" id="Main" src="<{:U('Index/main')}>" frameborder="false" scrolling="auto"  width="100%" height="auto" allowtransparency="true"></iframe>
+		</div>
+    </div>
+	<div id="leftMenuBox">
+    	<div id="leftMenu">
+			<div style="padding-left:12px;_padding-left:10px;">				
+				<dl id="nav_1">
+					<dt>后台首页</dt>
+					<dd><span url="<{:U('Index/main')}>">后台首页</span></dd>
+					<dd><span url="<{:U('Index/pass')}>">修改密码</a></span></dd>
+					<dd><span url="<{:U('Index/profile')}>">个人资料</a></span></dd>
+					<dd><span url="<{:U('Index/cache')}>">更新缓存</a></span></dd>
+					<dd><span url="<{:U('Sitemap/get_sitemap')}>">更新SiteMap</a></span></dd>
+				</dl>
+				<dl id="nav_2">
+					<dt>系统设置</dt>
+					<dd><span url="<{:U('Config/index')}>">站点配置</span></dd>
+					<dd><span url="<{:U('Adver/index')}>">广告管理</span></dd>
+					<dd><span url="<{:U('Flink/index')}>">友情链接管理</span></dd>
+					<dd><span url="<{:U('Admin/index')}>">管理员管理</span></dd>
+				</dl>
+				<dl id="nav_3">
+					<dt>内容管理</dt>
+					<dd><span url="<{:U('Article/index')}>">内容列表</span></dd>
+					<dd><span url="<{:U('Article/ticket')}>">内容审核</span></dd>
+					<dd><span url="<{:U('Collect/index')}>">内容采集</span></dd>
+					<dd><span url="<{:U('Article/addVideo')}>">一键采集视频信息</span></dd>
+					<dd><span url="<{:U('Tag/index')}>">热门标签</span></dd>
+				</dl>
+				<dl id="nav_4">
+					<dt>会员管理</dt>
+					<dd><span url="<{:U('User/index')}>">会员列表</span></dd>
+				</dl>
+			</div>
+		</div>
+
+		<div id="Main_drop">
+			<a  href="javascript:toggleMenu(1);" class="on"><img src="<{$TMPL_PUBLIC}>Images/admin_barclose.gif" width="11" height="60" border="0"  /></a>   
+			<a  href="javascript:toggleMenu(0);" class="off" style="display:none;"><img src="<{$TMPL_PUBLIC}>Images/admin_baropen.gif" width="11" height="60" border="0"  /></a>  
+		</div>
+    </div>
+
+</div>
+
+<div id="footer" class="footer" >Powered by <a href="http://www.loowei.com" target="_blank">LooWei.com</a> Copyright 2013 <span id="run"></span></div>
+
+<script language="JavaScript">
+if(!Array.prototype.map)
+Array.prototype.map = function(fn,scope) {
+  var result = [],ri = 0;
+  for (var i = 0,n = this.length; i < n; i++){
+	if(i in this){
+	  result[ri++]  = fn.call(scope ,this[i],i,this);
+	}
+  }
+return result;
+};
+var getWindowWH = function(){
+	  return ["Height","Width"].map(function(name){
+	  return window["inner"+name] ||
+		document.compatMode === "CSS1Compat" && document.documentElement[ "client" + name ] || document.body[ "client" + name ]
+	});
+}
+window.onload = function (){
+	if(!+"\v1" && !document.querySelector) { //IE6 IE7
+		document.body.onresize = resize;
+	} else { 
+	  window.onresize = resize; 
+	}
+	function resize() {
+		wSize();
+		return false;
+	}
+}
+function wSize(){
+	var str=getWindowWH();
+	var strs= new Array();
+	strs=str.toString().split(","); //字符串分割
+	var h = strs[0] - 95-30;
+	$('#leftMenu').height(h);
+	$('#Main').height(h); 
+}
+wSize();
+
+function toggleMenu(doit){
+	if(doit==1){
+		$('#Main_drop a.on').hide();
+		$('#Main_drop a.off').show();
+		$('#MainBox .main_box').css('margin-left','24px');
+		$('#leftMenu').hide();
+	}else{
+		$('#Main_drop a.off').hide();
+		$('#Main_drop a.on').show();
+		$('#leftMenu').show();
+		$('#MainBox .main_box').css('margin-left','224px');
+	}
+}	
+</script>
+</body>
+</html>

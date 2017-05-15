@@ -1,0 +1,1 @@
+if(self==top){window.top.location.href = './admin.php?m=index&a=index';}

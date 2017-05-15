@@ -1,0 +1,48 @@
+<include file="Public:header"/>
+<div id="nav" class="mainnav_title">
+	<ul>
+		<a href="<{:U('Config/index')}>">站点配置</a>|
+		<a href="<{:U('Config/sys')}>">系统参数</a>|
+		<a href="<{:U('Config/user')}>">会员设置</a>|
+		<a href="<{:U('Config/mail')}>">系统邮箱</a>|
+		<a href="<{:U('Config/water')}>" class="on">上传图片配置</a>|
+		<a href="<{:U('Config/other')}>">第三方配置</a>|
+		<a href="<{:U('Config/mobile')}>">手机版设置</a>|
+		<a href="<{:U('Config/collect')}>">采集设置</a>
+	</ul>
+</div>
+<form id="myform" method='post' name="login" action="<{:U('Config/amend')}>">
+	<table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+		<tr>
+			<th width="140">上传图片最大限制:</th>
+			<td><input type="text" class="input-text" name="upload_pic_max_size" value="<{$config.upload_pic_max_size}>" size="3"/>M</td>
+		</tr>
+		<tr>
+			<th width="140">图片缩略图尺寸-宽:</th>
+			<td><input type="text" class="input-text" name="upload_pic_width" value="<{$config.upload_pic_width}>" size="7"/>px</td>
+		</tr>
+		<tr>
+			<th width="140">图片缩略图尺寸-高:</th>
+			<td><input type="text" class="input-text" name="upload_pic_height" value="<{$config.upload_pic_height}>" size="7"/>px</td>
+		</tr>
+		<tr>
+			<th width="140">开启水印:</th>
+			<td>
+				<select name="open_water" class="valid">
+					<option value="0" <if condition="$config['open_water'] eq 0">selected="selected"</if>>关闭</option>
+					<option value="1" <if condition="$config['open_water'] eq 1">selected="selected"</if>>开启</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th width="140">水印图标位置:</th>
+			<td><input type="text" class="input-text" name="water_file" value="<{$config.water_file}>" size="50"/> <font color="red">请使用相对于根目录的地址。</font></td>
+		</tr>
+	</table>
+	<div class="btn">
+		<input TYPE="submit"  name="dosubmit" value="提交" class="button" />
+		<input type="reset"  value="取消" class="button" />
+	</div>
+</form>
+</body>
+</html>

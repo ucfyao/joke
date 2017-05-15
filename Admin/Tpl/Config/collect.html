@@ -1,0 +1,37 @@
+<include file="Public:header"/>
+<div id="nav" class="mainnav_title">
+	<ul>
+		<a href="<{:U('Config/index')}>">站点配置</a>|
+		<a href="<{:U('Config/sys')}>">系统参数</a>|
+		<a href="<{:U('Config/user')}>">会员设置</a>|
+		<a href="<{:U('Config/mail')}>">系统邮箱</a>|
+		<a href="<{:U('Config/water')}>">上传图片配置</a>|
+		<a href="<{:U('Config/other')}>">第三方配置</a>|
+		<a href="<{:U('Config/mobile')}>">手机版设置</a>|
+		<a href="<{:U('Config/collect')}>" class="on">采集设置</a>
+	</ul>
+</div>
+<form id="myform" method='post' name="login" action="<{:U('Config/amend')}>">
+	<table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+		<tr>
+			<th width="140">顶的数量:</th>
+			<td>
+				<input type="text" class="input-text" name="collect_upper_min" value="<{$config.collect_upper_min}>" size="5"/> - 
+				<input type="text" class="input-text" name="collect_upper_max" value="<{$config.collect_upper_max}>" size="5"/> 将在此两个数字间随机，前小后大。设置成 0-0 即不设置数量
+			</td>
+		</tr>
+		<tr>
+			<th width="140">踩的数量:</th>
+			<td>
+				<input type="text" class="input-text" name="collect_below_min" value="<{$config.collect_below_min}>" size="5"/> - 
+				<input type="text" class="input-text" name="collect_below_max" value="<{$config.collect_below_max}>" size="5"/> 将在此两个数字间随机，前小后大。设置成 0-0 即不设置数量
+			</td>
+		</tr>
+	</table>
+	<div class="btn">
+		<input TYPE="submit"  name="dosubmit" value="提交" class="button" />
+		<input type="reset"  value="取消" class="button" />
+	</div>
+</form>
+</body>
+</html>

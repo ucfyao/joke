@@ -1,0 +1,46 @@
+<include file="Public:header"/>
+<form id="myform" method='post' name="login" action="<{:U('Article/inspect')}>">
+	<input type="hidden" name="id" value="<{$new.id}>" />
+	<table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+		<tr>
+			<td width="15%">内容：</td>
+			<td style="font-size:14px;">
+				<textarea rows="8" cols="100" name="content"><{$new.content|htmlspecialchars_decode=###}></textarea>
+			</td>
+		</tr>
+		<if condition="$new['pic_url']">
+			<tr>
+				<td width="15%">图片：</td>
+				<td style="font-size:14px;"><img src="<{$config.site_url}>/Uploads/Images/<{$new.pic_url}> "/></td>
+			</tr>
+		</if>
+		<if condition="$new['video']">
+			<tr>
+				<td width="15%">视频：</td>
+				<td style="font-size:14px;"><embed src="<{$new.video}>" type="application/x-shockwave-flash" /></td>
+			</tr>
+		</if>
+		<tr>
+			<td width="15%">设置标题：</td>
+			<td><input type="text" name="title" class="input-text" size="60" value="<{$new.title}>"/></td>
+		</tr>
+		<tr>
+			<td width="15%">设置Tag：</td>
+			<td><input type="text" name="tag" class="input-text" size="60" value="<{$new.tag}>"/></td>
+		</tr>
+		<tr>
+			<td width="15%">是否通过：</td>
+			<td>
+				<label style="margin-right:20px;"><input type="radio" name="action" value="1" checked="checked"/> 是</label>
+				<label><input type="radio" name="action" value="0"/> 否(删除)</label>
+			
+			</td>
+		</tr>
+	</table>
+	<div class="btn">
+		<input TYPE="submit" name="dosubmit" value="提交" class="button" />
+		<input type="reset" value="取消" class="button" />
+	</div>
+</form>
+</body>
+</html>

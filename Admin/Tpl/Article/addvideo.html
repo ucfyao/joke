@@ -1,0 +1,66 @@
+<include file="Public:header"/>
+		<h1>测试版-未公开发行版</h1>
+		<form method="post" action="<{:U('Article/addVideo')}>">
+			<table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+				<tr>
+					视频网址：<input name="value" type="text" class="input-text" value="<{$value}>" size="80"/>
+					<select name="type">
+						<volist name="all" id="vo">
+							<option value="<{$vo}>" <if condition="$type eq $vo">selected="selected"</if>><{$key}></option>
+						</volist>
+					</select>
+					<input type="submit" class="button" value="开始获取"/>
+				</tr>
+			</table>
+		</form>
+		<br/><br/>
+		<if condition="$article && !empty($article['video'])">
+			<h1>以下为采集到的内容</h1>
+			<form method="post" action="<{:U('Article/submitaddVideo')}>">
+				<table cellpadding=0 cellspacing=0 class="table_form" width="100%">
+					<tr>
+						<td width="15%">标题：</td>
+						<td><input type="text" name="title" class="input-text" value="<{$article.title}>" size="60"/></td>
+					</tr>
+					<tr>
+						<td width="15%">内容：</td>
+						<td><input type="text" name="content" class="input-text" value="<{$article.content}>" size="60"/></td>
+					</tr>
+					<if condition="$article['pic_large']">
+					<tr>
+						<td width="15%">大图片：</td>
+						<td><img src="<{$article.pic_large}>"/><input type="hidden" name="pic_large" value="<{$article.pic_large}>"/></td>
+					</tr>
+					</if>
+					<if condition="$article['pic_small']">
+					<tr>
+						<td width="15%">小图片：</td>
+						<td><img src="<{$article.pic_small}>"/><input type="hidden" name="pic_small" value="<{$article.pic_small}>"/></td>
+					</tr>
+					</if>
+					<tr>
+						<td width="15%">图片选择：</td>
+						<td>
+							<input type="radio" name="pic_type" value="1" <if condition="$article['pic_large']">checked="checked"</if>/>使用大图&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="pic_type" value="2" <if condition="!$article['pic_large']">checked="checked"</if>/>使用小图
+						</td>
+					</tr>
+					<tr>
+						<td width="15%">视频地址：</td>
+						<td><input type="text" name="video" value="<{$article.video}>" size="60"/></td>
+					</tr>
+					<if condition="$article['tag']">
+						<tr>
+							<td width="15%">Tag：</td>
+							<td><input type="text" name="tag" value="<{$article.tag}>" size="60"/></td>
+					</if>
+				</table>
+				<div class="btn">
+					<input TYPE="submit" name="dosubmit" value="发布" class="button" />
+				</div>
+			</form>
+		<else/>
+			还未开始获取视频，或视频获取失败！
+		</if>
+	</body>
+</html>

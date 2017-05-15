@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title><if condition="$_GET['page'] gt 1">第<{$_GET.page}>页_</if>24小时内_<{$config.site_name}></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="<{$config.seo_keywords}>"/>
+		<meta name="description" content="<{$config.seo_description}>"/>
+		<meta name="author" content="loowei.com"/>
+		<meta name="generator" content="loowei笑话程序"/>
+		<meta name="copyright" content="loowei.com"/>
+		<link rel="stylesheet" type="text/css" href="<{$TMPL_PUBLIC}>/Css/main.css"/>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.js"></script>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.artDialog.js?skin=aero"></script>
+		<script type="text/javascript" src="<{$config.site_url}>/Public/Js/jquery.placeholder.js"></script>
+		<script type="text/javascript">var site_url='<{$config.site_url}>';</script>
+		<script type="text/javascript" src="<{$TMPL_PUBLIC}>/Js/main.js"></script>
+	</head>
+	<body>
+		<include file="Public:top" />
+		<div class="main">
+			<div class="content-block">
+				<div class="col_l">
+					<article_list day="1" page="1" user="1" order="`upper` DESC">
+						<div class="block" id="qiushi_block_<{$value.id}>">
+							<div class="detail">
+								<a href="<{$value.url}>" target="_blank"><{$value.title}></a>
+							</div>
+							<div class="author">
+								<if condition="empty($value['is_anonymous'])">
+									<img src="<{$value.avatar_s}>" alt="<{$value.nickname}>" />
+									<a href="<{$value.user_url}>" target="_blank"><{$value.nickname}></a>
+								<else/>
+									<img src="<{$config.site_url}>/Uploads/Avatar/s_avatar.gif" alt="匿名" />
+									<a href="javascript:void(0);">匿名</a>
+								</if>
+							</div>
+							<div class="content" title="<{$value.time|date='Y-m-d H:i:s',###}>"><{$value.content}></div>
+							<if condition="$value['pic_url']">
+								<div class="thumb">
+									<if condition="$value['video']">
+										<a href="javascript:;" class="showVideo" video="<{$value.video}>" title="播放视频">
+											<img src="<{$value.pic_url}>" alt="<{$value.title}>" />
+											<span class="play"></span>
+										</a>	
+									<else/>
+										<img src="<{$value.pic_url}>" alt="<{$value.title}>" width="<{$value.pic_width}>px" height="<{$value.pic_height}>px"/>
+									</if>
+									
+								</div>
+							</if>
+							<if condition="$value['tag']">
+								<div class="tags">
+									<span class="bti"></span>
+									<volist name="value['tags']" id="vo">
+										<a href="<{$vo.url}>" target="_blank"><{$vo.tag}></a>&nbsp; 
+									</volist>
+								</div>
+							</if>
+							<div id="qiushi_counts_<{$value.id}>" class="bar">
+								<ul>
+									<li id="vote-up-<{$value.id}>" class="up">
+										<a <if condition="$vote[$value['id']] eq 0">href="javascript:qiushi_vote(<{$value.id}>,1)"<else/>href="javascript:;"</if> <if condition="$vote[$value['id']] eq '1'">class="voted"</if> id="up-<{$value.id}>" title="<{$value.upper}>个顶"><{$value.upper}></a>
+									</li>
+									<li id="vote-dn-<{$value.id}>" class="down">
+										<a <if condition="$vote[$value['id']] eq 0">href="javascript:qiushi_vote(<{$value.id}>,-1)"<else/>href="javascript:;"</if> <if condition="$vote[$value['id']] eq '-1'">class="voted"</if> id="dn-<{$value.id}>" title="-<{$value.below}>个拍">-<{$value.below}></a>
+									</li>
+									<li class="comment">
+										<a href="<{$value.url}>#comments_<{$value.id}>" articleid="<{$value.id}>" id="comments-<{$value.id}>" class="comment" title="<{$value.reply}>条评论"><{$value.reply}></a>
+									</li>
+									<li class="share">
+										<a href="javascript:;" title="分享">分享</a>
+									</li>
+								</ul>
+								<div class="sharebox">
+									<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" data="'pic':'<{$value.pic_url}>','url':'<{$value.full_url}>','text':'转自@<{$config.site_name}>：<if condition="$value['video']">[视频]..</if><{$value.content|strip_tags|msubstr=###,0,115}>'}">
+										<a class="bds_renren" title="分享到人人网" href="#">人人网</a>
+										<a class="bds_qzone" title="分享到QQ空间" href="#">QQ空间</a>
+										<a class="bds_tsina" title="分享到新浪微博" href="#">新浪微博</a>
+										<a class="bds_tqq" title="分享到腾讯微博" href="#">腾讯微博</a>
+										<div class="arrow"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="shadow"></div>
+					</article_list>
+					<div class="pagebar">
+						<{$article_page}>
+					</div>
+				</div>
+				<div class="col_r">
+					<div class="sponsor">
+						<{$adver_list.1}>
+					</div>
+					<div class="shadow"></div>
+					<div class="microblog">
+						<h3>收听我们</h3>
+						<div class="content">
+							<div class="follow">
+								<ul>
+									<li class="inline-block f-sina">
+										<a href="<{$config.other_sina_url}>" target="_blank">新浪微博</a>
+									</li>
+									<li class="inline-block f-qq">
+										<a href="<{$config.other_tqq_url}>" target="_blank">腾讯微博</a>
+									</li>
+									<li class="inline-block f-rss">
+										<a href="<{$config.other_feed_url}>" target="_blank">Feed订阅</a>
+									</li>
+									<li class="inline-block f-feed">
+										<a href="http://mail.qq.com/cgi-bin/feed?u=<{$config.site_url}>/rss.xml" target="_blank" rel="nofollow">邮箱订阅</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="shadow"></div>
+					<div class="sponsor">
+						<{$adver_list.2}>
+					</div>
+					<div class="shadow"></div>
+					<div class="tagsblock">
+						<h3>标签</h3>
+						<div class="content">
+							<hot_tag_list limit="0">
+								<a href="<{$value.tag_url}>"><{$value.tag_name}></a>
+							</hot_tag_list>
+							<a href="<{$more_tag_url}>">更多...</a>
+						</div>
+					</div>
+					<div class="shadow"></div>
+					<div class="sponsor">
+						<{$adver_list.3}>
+					</div>
+					<div class="shadow"></div>
+					<div id="box">
+						<div id="float">
+							<div class="sponsor">
+								<{$adver_list.4}>
+							</div>
+							<div class="shadow"></div>
+							<div id="float-ad2" class="sponsor" style="display:none;">
+								<{$adver_list.5}>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="text-ad">
+					<{$adver_list.6}>
+				</div>
+			</div>
+		</div>
+<include file="Public:footer" />

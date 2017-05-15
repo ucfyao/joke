@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<document xmlns:bbs="http://www.baidu.com/search/bbs_sitemap.xsd">
+	<webSite><{$config.site_url}></webSite>
+	<webMaster><{$config.site_email}></webMaster>
+	<updatePeri>24</updatePeri>
+	<updatetime><{$_SERVER.REQUEST_TIME|date='Y-m-d H:i:s',###}><item><link><{$config.site_url}></link><title><{$config.site_name}></title><pubDate><{$_SERVER.REQUEST_TIME|date='Y-m-d H:i:s',###}></pubDate></item></updatetime>
+	<volist name="article" id="vo">
+		<item>
+			<if condition="$config['site_html']">
+				<link><{$config.site_url}>/article/<{$vo.id}></link>
+			<else/>
+				<link><{$config.site_url}>/index.php?m=article&a=index&id=<{$vo.id}></link>
+			</if>
+			<title><{$vo.title}></title>
+			<pubDate><{$vo.time|date='Y-m-d H:i:s',###}></pubDate>
+		</item>
+	</volist>
+</document>

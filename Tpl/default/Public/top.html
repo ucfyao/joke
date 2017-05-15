@@ -1,0 +1,40 @@
+		<div class="h_w">
+			<div class="h_h">
+				<div class="l">
+					<if condition="$config['open_mobile']">
+						<a href="<{$config.mobile_site_url}>" rel="nofollow" class="phone">手机版</a><span>|</span>
+					</if>
+					<a href="Javascript:add_Favorite('<{$config.site_url}>','<{$config.site_name}>')" rel="nofollow" class="fav">加入收藏</a>
+				</div>
+				<div class="r" id="user_login">
+					<if condition="empty($_SESSION['user'])">
+						<a href="javascript:loginbox();">登录</a><span>|</span><a href="javascript:regbox();">注册</a>
+					<else/>
+						Welcome，<font color="red"><{$_SESSION.user.nickname}></font><span>|</span><a href="<{:get_user_center()}>"><font color="red">个人中心</font></a><span>|</span><a href="<{:U('Login/loginout')}>">退出</a>
+					</if>
+				</div>
+			</div>
+		</div>
+		<div class="logo_div">
+			<h1 id="logo"><a href="<{$config.site_url}>"><img src="<{$config.site_logo}>" alt="<{$config.site_name}>"/></a></h1>
+			<div class="menu">
+				<ul>
+					<li><a <if condition="in_array(ACTION_NAME,array('8hr','index')) && MODULE_NAME eq 'Index'">id="highlight"</if> href="<{:get_list_url('8hr')}>">热门</a></li>
+					<li><a <if condition="in_array(ACTION_NAME,array('late'))">id="highlight"</if> href="<{:get_list_url('late')}>">最新</a></li>
+					<li class="hot">
+						<a <if condition="in_array(ACTION_NAME,array('hot','week','month'))">id="highlight"</if> href="<{:get_list_url('hot')}>" class="dropdown">精华</a>
+						<div class="drpmdown-list">
+							<a href="<{:get_list_url('hot')}>" class="submenu">24小时内</a>
+							<a href="<{:get_list_url('week')}>" class="submenu">7天内</a>
+							<a href="<{:get_list_url('month')}>" class="submenu">30天内</a>
+						</div>
+					</li>
+					<li class="menuout"><a <if condition="in_array(ACTION_NAME,array('pic'))">id="highlight"</if> href="<{:get_list_url('pic')}>">图片</a></li>
+					<li class="menuout"><a <if condition="in_array(ACTION_NAME,array('video'))">id="highlight"</if> href="<{:get_list_url('video')}>">视频</a></li>
+					<li class="menuout"><a <if condition="in_array(ACTION_NAME,array('index')) && MODULE_NAME eq 'History'">id="highlight"</if> href="<{:get_list_url('index','History')}>">穿越</a></li>
+					<li class="menuout"><a <if condition="in_array(ACTION_NAME,array('ticket'))">id="highlight"</if> href="<{:get_list_url('ticket')}>">审贴</a></li>
+					<li class="menuout" id="btn-talk"><a href="<{:get_list_url('add')}>">讲一个</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"></div>

@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /Admin/
+Disallow: /Cache/
+Disallow: /Conf/
+Disallow: /Core/
+Disallow: /Index/
+Disallow: /Install/
+Disallow: /Public/
+Disallow: /Tpl/

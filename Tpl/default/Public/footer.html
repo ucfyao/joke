@@ -1,0 +1,101 @@
+		<div id="footer">
+			<dl class="friendlinks">
+				<dt></dt>
+				<dd>
+					<volist name="flink_list" id="vo">
+						<a href="<{$vo.url}>" target="_blank" title="<{$vo.info}>"><{$vo.name}></a><if condition="count($flink_list) neq $i">|</if>
+					</volist>
+				</dd>
+			</dl>
+			<div class="copyright">
+				<p class="l">
+					版权所有 <span style="font-family:Helvetica;">©</span> 2013 <{$config.site_name}>&nbsp;&nbsp;&nbsp;&nbsp;<if condition="$config['site_icp']"><a href="http://www.miibeian.gov.cn" target="_blank" rel="nofollow"><{$config.site_icp}></a></if>
+				</p>
+				<p class="r">Power by <a href="http://www.loowei.com" target="_blank">Loowei</a></p>
+			</div>
+			<a class="goTop" id="goTop" href="#" target="_self"></a>
+		</div>
+		<!--其他插件 S-->
+			<div class="hc"><{$config.site_footer}></div>
+			<php>if(empty($_SESSION['user'])){</php>
+				<div class="hc alert_box" id="loginbox">
+					<div class="signin-form">
+						<form method="post" id="login-form">
+							<input type="text" id="login_login" name="login" placeholder="用户名" />
+							<input type="password" id="login_password" name="password" placeholder="密码" />
+							<button type="submit">登录</button>
+						</form>
+					</div>
+					<if condition="$config['open_qq_connect'] || $config['open_sina_connect']">
+						<div class="signin-account">
+							<span>合作网站登录：</span>
+							<if condition="$config['open_qq_connect']">
+								<span class="signin-icon-qq"></span>
+								<a href="<{:U('Qzone/index')}>">腾讯QQ</a>
+							</if>
+							<if condition="$config['open_sina_connect']">
+								<span class="signin-icon-weibo"></span>
+								<a href="<{:U('Sina/index')}>">新浪微博</a>
+							</if>
+						</div>
+					</if>
+					<div class="signin-foot">
+						<a href="javascript:fetchpassbox();">找回密码</a>
+						<a href="javascript:regbox();">注册</a>
+					</div>
+				</div>
+				<div class="hc alert_box" id="regbox">
+					<div class="signin-form">
+						<form method="post" id="reg-form">
+							<input type="text" id="reg_login" name="login" placeholder="用户名" /><br/><br/>
+							<input type="password" id="reg_password" name="password" placeholder="密码(最少6位)" /><br/><br/>
+							<input type="text" id="reg_email" name="email" placeholder="邮箱" /><br/><br/>
+							<button type="submit">注册</button>
+						</form>
+					</div>
+					<if condition="$config['open_qq_connect'] || $config['open_sina_connect']">
+						<div class="signin-account">
+							<span>合作网站登录：</span>
+							<if condition="$config['open_qq_connect']">
+								<span class="signin-icon-qq"></span>
+								<a href="<{:U('Qzone/index')}>">腾讯QQ</a>
+							</if>
+							<if condition="$config['open_sina_connect']">
+								<span class="signin-icon-weibo"></span>
+								<a href="<{:U('Sina/index')}>" target="_blank">新浪微博</a>
+							</if>
+						</div>
+					</if>
+					<div class="signin-foot">
+						<a href="javascript:fetchpassbox();">找回密码</a>
+						<a href="javascript:loginbox();">登录</a>
+					</div>
+				</div>
+				<div class="hc alert_box" id="fetchpassbox">
+					<div class="signin-form">
+						<form method="post" id="fetchpass-form">
+							<input type="text" id="fetchpass_login" name="login" placeholder="用户名" /><input type="text" id="fetchpass_email" name="email" placeholder="注册时的邮箱" /><button type="submit">找回密码</button>
+						</form>
+					</div>
+					<if condition="$config['open_qq_connect'] || $config['open_sina_connect']">
+						<div class="signin-account">
+							<span>合作网站登录：</span>
+							<if condition="$config['open_qq_connect']">
+								<span class="signin-icon-qq"></span>
+								<a href="<{:U('Qzone/index')}>">腾讯QQ</a>
+							</if>
+							<if condition="$config['open_sina_connect']">
+								<span class="signin-icon-weibo"></span>
+								<a href="https://api.weibo.com/oauth2/authorize?client_id=63372306&redirect_uri=<{:urlencode($config['site_url'].'/login?src=sina')}>" target="_blank">新浪微博</a>
+							</if>
+						</div>
+					</if>
+					<div class="signin-foot">
+						<a href="javascript:loginbox();">登录</a>
+						<a href="javascript:regbox();">注册</a>
+					</div>
+				</div>
+			<php> } </php>
+		<!--其他插件 E-->
+	</body>
+</html>
