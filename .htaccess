@@ -1,0 +1,42 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+
+#内页
+RewriteRule ^article/(\d+)$ index.php?m=article&a=index&id=$1
+RewriteRule ^article/(\d+)/$ /article/$1 [L,R=301]
+
+#标签页
+RewriteRule ^tag/(.*?)/(\d+)$ index.php?m=tag&a=index&tag=$1&page=$2
+RewriteRule ^tag/(.*?)$ index.php?m=tag&a=index&tag=$1
+RewriteRule ^tagcloud/(\d+)$ index.php?m=tag&a=tagcloud&page=$1
+
+#穿越
+RewriteRule ^history/$ index.php?m=history&a=index
+RewriteRule ^history/(\d+)/(\d+)/(\d+)/$ index.php?m=history&a=index&year=$1&month=$2&day=$3
+RewriteRule ^history/(\d+)/(\d+)/(\d+)/(\d+)/$ index.php?m=history&a=index&year=$1&month=$2&day=$3&page=$4
+
+#用户中心
+RewriteRule ^users/(\d+)/$ index.php?m=users&a=index&uid=$1
+RewriteRule ^users/(\d+)/article/$ index.php?m=users&a=index&uid=$1
+RewriteRule ^users/(\d+)/article/(\d+)/$ index.php?m=users&a=index&uid=$1&page=$2
+RewriteRule ^users/(\d+)/(\w+)/$ index.php?m=users&a=$2&uid=$1
+RewriteRule ^users/(\d+)/(\w+)/(\d+)$ index.php?m=users&a=$2&uid=$1&page=$3
+
+#头像相关
+RewriteRule ^avatar/(\w)/(\d+).jpg$ index.php?m=avatar&a=index&size=$1&uid=$2
+
+
+#列表
+RewriteRule ^m/(.*)$ m/$1 [L]
+RewriteRule ^(\w+)/$ index.php?m=index&a=$1
+RewriteRule ^(\w+)/(\d+)/$ index.php?m=index&a=$1&page=$2
+
+RewriteRule ^(\w+)$ /$1/ [L,R=301]
+RewriteRule ^(\w+)/(\w+)$ /$1/$2/ [L,R=301]
+RewriteRule ^(\w+)/(\w+)/(\w+)$ /$1/$2/$3 [L,R=301]
+RewriteRule ^(\w+)/(\w+)/(\w+)/(\w+)$ /$1/$2/$3/$4 [L,R=301]
+
+ErrorDocument 404 /index.php?m=index&a=404
+Options All -Indexes
