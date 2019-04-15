@@ -14,7 +14,7 @@ return array(
 	'DB_HOST'=>'localhost',
 	'DB_NAME'=>'loowei_xh',
 	'DB_USER'=>'root',
-	'DB_PWD'=>'',
+	'DB_PWD'=>'1Qasdfghjkl;\'',
 	'DB_PORT'=>'3306',
 	'DB_PREFIX'=>'loowei_',
 );

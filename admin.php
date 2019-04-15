@@ -17,6 +17,6 @@ header('Content-type:text/html;charset=utf-8');
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 define('APP_NAME','Admin');
 define('APP_PATH','./Admin/');
-define('APP_DEBUG',false);
+define('APP_DEBUG',true);
 define('DATA_PATH','./Cache/Data/');
 require './Core/Core.php';
